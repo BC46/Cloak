@@ -9,11 +9,11 @@ DEF_DIR = def
 
 RC_FILE = $(RC_DIR)\main.rc
 CPP_FILES = $(SRC_DIR)\*.cpp
-#COMMON_DEF = $(DEF_DIR)\Common.def
+COMMON_DEF = $(DEF_DIR)\Common.def
 
 RES_FILE = $(OBJ_DIR)\main.RES
 OBJ_FILES = $(OBJ_DIR)\*.obj
-#COMMON_LIB = $(OBJ_DIR)\Common.lib
+COMMON_LIB = $(OBJ_DIR)\Common.lib
 
 OUTPUT_FILE = $(BIN_DIR)\Cloak.dll
 
@@ -21,14 +21,17 @@ CXX_FLAGS = /c /GX /O2 /nologo /W3 /WX /LD /MD
 LD_FLAGS = /DLL /FILEALIGN:512 /NOLOGO /RELEASE
 LIB_FLAGS = /NOLOGO /MACHINE:IX86
 
-$(OUTPUT_FILE): $(RES_FILE) $(OBJ_FILES) $(BIN_DIR)
-    link $(OBJ_FILES) $(RES_FILE) $(LD_FLAGS) /OUT:$(OUTPUT_FILE)
+$(OUTPUT_FILE): $(RES_FILE) $(COMMON_LIB) $(OBJ_FILES) $(BIN_DIR)
+    link $(OBJ_FILES) $(COMMON_LIB) $(RES_FILE) $(LD_FLAGS) /OUT:$(OUTPUT_FILE)
 
 {$(SRC_DIR)}.cpp{$(OBJ_DIR)}.obj::
     $(CPP) $(CXX_FLAGS) $< -I$(INCLUDE_DIR) /Fo./$(OBJ_DIR)/
 
 $(RES_FILE): $(RC_FILE) $(OBJ_DIR)
     rc /fo $(RES_FILE) $(RC_FILE)
+
+$(COMMON_LIB): $(COMMON_DEF)
+    lib $(LIB_FLAGS) /def:$(COMMON_DEF) /name:COMMON /out:$(COMMON_LIB)
 
 $(OBJ_DIR):
     if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)

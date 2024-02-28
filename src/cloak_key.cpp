@@ -5,9 +5,30 @@
 
 #define HANDLE_KEY_SECOND_INSTR_ADDR HANDLE_KEY_ADDR + 0x6
 
+CShip* GetPlayerShip()
+{
+    IObjInspectImpl* playerIObjInspect = ((GetPlayerIObjInspectImpl*) GET_PLAYERIOBJINSPECTIMPL_ADDR)();
+    return !playerIObjInspect ? NULL : playerIObjInspect->ship;
+}
+
 void DoCloak()
 {
-    // TODO: Implement
+    CShip* playerShip = GetPlayerShip();
+
+    if (!playerShip)
+        return;
+
+    CECloakingDevice* cd = CECloakingDevice::cast(playerShip->equipManager.FindFirst(CLOAKING_DEVICE_TYPE));
+
+    if (!cd)
+        return;
+
+    float cloakPercent = cd->cloak_percent();
+
+    if (cloakPercent == 0.0f)
+        cd->Activate(true);
+    else if (cloakPercent == 1.0f)
+        cd->Activate(false);
 }
 
 bool HandleKey_Hook(UINT keyId, BYTE unk)

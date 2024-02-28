@@ -1,4 +1,4 @@
 EXPORTS
-?FindFirst@CEquipManager@@QBEPBVCEquip@@I@Z
-?cast@CEEngine@@SAPBV1@PBVCEquip@@@Z
+?FindFirst@CEquipManager@@QAEPAVCEquip@@I@Z
+?cast@CECloakingDevice@@SAPAV1@PAVCEquip@@@Z
 ?cloak_percent@CECloakingDevice@@QBEMXZ
