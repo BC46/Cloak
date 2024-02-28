@@ -33,8 +33,8 @@ void DoCloak()
 
 bool HandleKey_Hook(UINT keyId, BYTE unk)
 {
-    // If the cloak key is pressed, we handle it ourselves
-    if (keyId == CLOAK_KEY_IDENTIFIER)
+    // If the cloak key is pressed and we are in SP, we handle it ourselves
+    if (keyId == CLOAK_KEY_IDENTIFIER && SinglePlayer())
     {
         DoCloak();
         return true;

@@ -7,6 +7,8 @@
 
 #define CLOAKING_DEVICE_TYPE 0x1000
 
+bool Import SinglePlayer();
+
 class CEquip{};
 
 class Import CEquipManager
