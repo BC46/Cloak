@@ -1,0 +1,4 @@
+#pragma once
+
+#define HANDLE_KEY_ADDR 0x576410
+#define CLOAK_KEY_IDENTIFIER 0x8E
