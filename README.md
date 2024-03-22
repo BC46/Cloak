@@ -12,6 +12,8 @@ In `DATA/INTERFACE/keylist.ini`, add the following below the first `[Group]` ent
 id = USER_CLOAK
 ```
 
+It is recommended to put this directly below `USER_AFTERBURN_OFF`.
+
 In `DATA/INTERFACE/keymap.ini`, add the following:
 ```ini
 [KeyCmd]
@@ -27,7 +29,7 @@ In the same file, locate the `KeyMap` entry for `IDR_SPACE` and add this line to
 key = USER_CLOAK
 ```
 
-In-game you can set a custom key for the `Toggle Cloak` control. Using this key, you can cloak and uncloak when in space, provided that the ship you are flying has a cloaking device equipped. Moreover, the initial cloaking state behavior can be adjusted in the `cloak.ini` file.
+In-game you can set a custom key for the `Toggle Cloak` control. Using this key, you can cloak and uncloak when in space, provided that the ship you are flying has a cloaking device equipped and that you are in Single Player. Moreover, the initial cloaking state behavior can be adjusted in the `cloak.ini` file.
 
 ## Build instructions
 Build the project using the `NMAKE` tool from Microsoft Visual C++ 6.0 (VC6 or Visual Studio 98) with the included makefile.
