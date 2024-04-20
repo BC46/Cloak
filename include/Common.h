@@ -5,6 +5,8 @@
 
 #define Import __declspec(dllimport)
 
+#define CLOAKING_DEVICE_ACTIVATE_OFF 0x344F3
+
 #define CLOAKING_DEVICE_TYPE 0x1000
 
 bool Import SinglePlayer();
@@ -59,4 +61,22 @@ struct IObjInspectImpl
 {
     BYTE data[16];
     CShip* ship;
+};
+
+class Import INI_Reader
+{
+public:
+    INI_Reader();
+    ~INI_Reader();
+
+    bool open(LPCSTR path, bool throwExceptionOnFail = false);
+    bool read_header();
+    bool is_header(LPCSTR name);
+    bool read_value();
+    bool is_value(LPCSTR name);
+    int get_value_int(UINT index = 0);
+    void close();
+
+private:
+    BYTE data[0x1565];
 };

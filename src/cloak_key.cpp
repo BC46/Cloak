@@ -52,3 +52,19 @@ bool Naked HandleKey_Original(UINT keyId, BYTE unk)
         ret                                     // Call the rest of the original function
     }
 }
+
+// If we want the initial cloaking state to be set to false, we only want this in SP
+bool __fastcall ActivateCloak_Hook(CECloakingDevice* cd, PVOID _edx, bool activate)
+{
+    return cd->Activate( SinglePlayer() ? false : activate );
+}
+
+// Hook for SP function that gets called right after initializing the player's ship (undock or load game in space)
+// This is where we want to deactivate the cloak
+bool PostInitSinglePlayer_Hook()
+{
+    DoCloak();
+
+    // Call original function
+    return SinglePlayer();
+}

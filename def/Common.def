@@ -3,3 +3,12 @@ EXPORTS
 ?cast@CECloakingDevice@@SAPAV1@PAVCEquip@@@Z
 ?cloak_percent@CECloakingDevice@@QBEMXZ
 ?SinglePlayer@@YA_NXZ
+??0INI_Reader@@QAE@XZ
+??1INI_Reader@@QAE@XZ
+?open@INI_Reader@@QAE_NPBD_N@Z
+?read_header@INI_Reader@@QAE_NXZ
+?is_header@INI_Reader@@QAE_NPBD@Z
+?read_value@INI_Reader@@QAE_NXZ
+?is_value@INI_Reader@@QAE_NPBD@Z
+?get_value_int@INI_Reader@@QAEHI@Z
+?close@INI_Reader@@QAEXXZ
