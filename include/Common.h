@@ -16,7 +16,7 @@ class CEquip{};
 class Import CEquipManager
 {
 private:
-	BYTE data[0x4];
+    BYTE data[0x4];
 public:
     CEquip* FindFirst(UINT type);
 };
@@ -37,8 +37,8 @@ typedef bool __fastcall ActivateCD(CECloakingDevice* cd, PVOID _edx, bool val);
 class Import CECloakingDevice
 {
 public:
-	static CECloakingDevice* cast(CEquip*);
-	float cloak_percent() const;
+    static CECloakingDevice* cast(CEquip*);
+    float cloak_percent() const;
 
     // NOTE: Do NOT call the _vftable functions unless documented;
     // they are there to set the correct offsets in the vftable for the functions we actually want to call
@@ -54,7 +54,7 @@ public:
     virtual void x24_vftable();
     virtual void x28_vftable();
     virtual void x2C_vftable();
-	virtual bool Activate(bool val);
+    virtual bool Activate(bool val);
 };
 
 struct IObjInspectImpl
