@@ -29,11 +29,6 @@ public:
     CEquipManager equipManager;
 };
 
-class Import CECloakingDevice;
-
-// Activate Cloaking Device function definition
-typedef bool __fastcall ActivateCD(CECloakingDevice* cd, PVOID _edx, bool val);
-
 class Import CECloakingDevice
 {
 public:
