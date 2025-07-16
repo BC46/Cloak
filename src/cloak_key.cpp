@@ -51,9 +51,16 @@ bool HandleKey_Hook(UINT keyId, BYTE unk)
     return HandleKey_Original(keyId, unk);
 }
 
-// If we want the initial cloaking state to be set to false, we only want this in SP
 bool __fastcall ActivateCloak_Hook(CECloakingDevice* cd, PVOID _edx, bool activate)
 {
+    // If the cloaking device is not activated by the player, just use the given value
+    // Otherwise if a storyline NPC with a cloaking device is spawned, then it may not get in the desired state
+    if (cd->parent != GetPlayerShip())
+    {
+        return cd->Activate(activate);
+    }
+
+    // If we want the initial cloaking state for the player to be set to false, we only want this in SP
     return cd->Activate( SinglePlayer() ? false : activate );
 }
 

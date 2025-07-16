@@ -50,6 +50,8 @@ public:
     virtual void x28_vftable();
     virtual void x2C_vftable();
     virtual bool Activate(bool val);
+
+    PVOID parent; // x04
 };
 
 struct IObjInspectImpl
