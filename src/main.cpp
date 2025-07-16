@@ -6,7 +6,8 @@
 void Init()
 {
     // Hook call
-    Hook(HANDLE_KEY_ADDR, (DWORD) HandleKey_Hook, 6, true);
+    auto handleKeyOriginal = AbsTrampoline(HANDLE_KEY_ADDR, HandleKey_Hook, 7);
+    SetOriginalHandleKeyFunc(handleKeyOriginal);
 
     CloakingStrategy strategy = GetCloakingStrategy();
 
@@ -28,7 +29,10 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved)
     UNREFERENCED_PARAMETER(lpReserved);
 
     if (fdwReason == DLL_PROCESS_ATTACH)
+    {
+        DisableThreadLibraryCalls(hinstDLL);
         Init();
+    }
 
     return TRUE;
 }

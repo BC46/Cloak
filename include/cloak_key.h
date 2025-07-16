@@ -5,9 +5,11 @@
 
 #include "Common.h"
 
-bool HandleKey_Hook(UINT keyId, BYTE unk);
+void SetOriginalHandleKeyOriginalFunc(bool (*func)(UINT keyId, BYTE unk));
 
-bool HandleKey_Original(UINT keyId, BYTE unk);
+void SetOriginalHandleKeyFunc(bool (*func)(UINT keyId, BYTE unk));
+
+bool HandleKey_Hook(UINT keyId, BYTE unk);
 
 bool __fastcall ActivateCloak_Hook(CECloakingDevice* cd, PVOID _edx, bool activate);
 

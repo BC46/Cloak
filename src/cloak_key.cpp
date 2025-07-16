@@ -31,6 +31,13 @@ void DoCloak()
         cd->Activate(false);
 }
 
+bool (*HandleKey_Original)(UINT keyId, BYTE unk);
+
+void SetOriginalHandleKeyFunc(bool (*func)(UINT keyId, BYTE unk))
+{
+    HandleKey_Original = func;
+}
+
 bool HandleKey_Hook(UINT keyId, BYTE unk)
 {
     // If the cloak key is pressed and we are in SP, we handle it ourselves
@@ -42,15 +49,6 @@ bool HandleKey_Hook(UINT keyId, BYTE unk)
 
     // If any other key is pressed, we let the game handle it
     return HandleKey_Original(keyId, unk);
-}
-
-bool Naked HandleKey_Original(UINT keyId, BYTE unk)
-{
-    __asm {
-        sub     esp, 0x80                       // Overwritten instruction
-        push    HANDLE_KEY_SECOND_INSTR_ADDR
-        ret                                     // Call the rest of the original function
-    }
 }
 
 // If we want the initial cloaking state to be set to false, we only want this in SP
