@@ -1,0 +1,400 @@
+<script>
+
+<header name="Cloak Mod (SP only)" savesafe="true">
+<scriptversion>
+1.3
+</scriptversion>
+<author>
+BC46
+</author>
+<modurl>
+https://github.com/BC46/Cloak
+</modurl>
+<description>
+Plugin for the game Freelancer (2003) that allows players to cloak and decloak in Single Player. It also adds a cloaking device to all flyable ships.
+
+In the In-game options menu you can set a custom key for the "Toggle Cloak" control. Using this key, you can cloak and uncloak when in space,
+
+Note that if you are starting a new game with this mod activated, make sure that you delete the Restart.fl file. Otherwise your starting ship may have no cloaking device. If you load an existing savegame, you might need to buy a new ship in order to have a working cloaking device.
+</description>
+</header>
+
+<!-- dacom.ini -->
+<data file="exe\dacom.ini" method="append">
+<section>
+[Libraries]
+</section>
+<source>
+Cloak.dll
+</source>
+</data>
+
+<!-- keymap.ini -->
+<data file="data\interface\keymap.ini" method="append">
+<section>
+[KeyCmd]
+nickname = USER_TRADE_REQUEST
+ids_name = 1983
+ids_info = 3216
+state = keydown
+key = "U"
+</section>
+<source>
+
+[KeyCmd]
+nickname = USER_CLOAK
+ids_name = 3007
+ids_info = 2207
+state = keydown
+key = "C", control
+</source>
+</data>
+
+<data file="data\interface\keymap.ini" method="append">
+<section>
+key = USER_NEXT_OBJECT
+key = USER_GROUP_INVITE
+key = USER_TRADE_REQUEST
+</section>
+<source>
+key = USER_CLOAK
+</source>
+</data>
+
+<!-- keylist.ini -->
+<data file="data\interface\keylist.ini" method="append">
+<section>
+[key]
+id = USER_CRUISE
+</section>
+<source>
+
+[key]
+id = USER_CLOAK
+</source>
+</data>
+
+<!-- loadouts.ini -->
+<data file="data\ships\loadouts.ini" method="append">
+<section>
+[Loadout]
+nickname = msn_playerloadout
+</section>
+<source>
+equip = cloak_fighter, HpCloak01
+</source>
+</data>
+
+
+<!-- goods.ini -->
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = gf1_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = gf2_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = gf4_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = gf5_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = gf6_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = bwf_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = bwe_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = bwe2_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = bwfr_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = cof_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = coe_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = coe2_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = lf_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = le_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = lfr_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = bf_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = be_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = bfr_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = kf_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = ke_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = kfr_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = rf_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = re_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = rfr_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = pf_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = pe_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = pfr_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = bhf_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = bhe_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = bhe2_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<data file="data\equipment\goods.ini" method="append">
+<section>
+[Good]
+nickname = oe_package
+</section>
+<source>
+addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+</script>
