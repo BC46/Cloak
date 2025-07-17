@@ -6,7 +6,7 @@
 void Init()
 {
     // Hook call
-    auto handleKeyOriginal = AbsTrampoline(HANDLE_KEY_ADDR, HandleKey_Hook, 7);
+    bool (*handleKeyOriginal)(UINT keyId, BYTE unk) = AbsTrampoline(HANDLE_KEY_ADDR, HandleKey_Hook, 7);
     SetOriginalHandleKeyFunc(handleKeyOriginal);
 
     CloakingStrategy strategy = GetCloakingStrategy();
@@ -19,7 +19,14 @@ void Init()
     else if (strategy == InactiveCS)
     {
         DWORD common = (DWORD) GetModuleHandleA("common.dll");
-        Hook(common + CLOAKING_DEVICE_ACTIVATE_OFF, (DWORD) ActivateCloak_Hook, 5);
+
+        // Check if Common.dll is 1.1 or 1.0 and apply the hook at the right location
+        PBYTE commonVerCheckByte = (PBYTE) common + CLOAKING_DEVICE_ACTIVATE_OFF_V1_0;
+        ReadWriteProtect((DWORD) commonVerCheckByte, sizeof(commonVerCheckByte));
+        DWORD patchOffset = *commonVerCheckByte == 0x3A
+            ? CLOAKING_DEVICE_ACTIVATE_OFF_V1_1 : CLOAKING_DEVICE_ACTIVATE_OFF_V1_0;
+
+        Hook(common + patchOffset, (DWORD) ActivateCloak_Hook, 5);
     }
 }
 
