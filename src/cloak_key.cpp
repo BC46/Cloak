@@ -55,7 +55,10 @@ bool __fastcall ActivateCloak_Hook(CECloakingDevice* cd, PVOID _edx, bool activa
 {
     // If the cloaking device is not activated by the player, just use the given value
     // Otherwise if a storyline NPC with a cloaking device is spawned, then it may not get in the desired state
-    if (cd->parent != GetPlayerShip())
+    CShip* playerShip = GetPlayerShip();
+
+    // playerShip is null if the player launches to space
+    if (playerShip && cd->parent != playerShip)
     {
         return cd->Activate(activate);
     }
