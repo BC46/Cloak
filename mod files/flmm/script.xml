@@ -19,7 +19,7 @@ Note that if you are starting a new game with this mod activated, make sure that
 </description>
 </header>
 
-<!-- dacom.ini -->
+<!-- dacom.ini (registers the Cloak plugin) -->
 <data file="exe\dacom.ini" method="append">
 <section>
 [Libraries]
@@ -29,7 +29,7 @@ Cloak.dll
 </source>
 </data>
 
-<!-- keymap.ini -->
+<!-- keymap.ini (defines the key for cloaking) -->
 <data file="data\interface\keymap.ini" method="append">
 <section>
 [KeyCmd]
@@ -61,7 +61,7 @@ key = USER_CLOAK
 </source>
 </data>
 
-<!-- keylist.ini -->
+<!-- keylist.ini (adds the cloak key to the options menu) -->
 <data file="data\interface\keylist.ini" method="append">
 <section>
 [key]
@@ -74,7 +74,7 @@ id = USER_CLOAK
 </source>
 </data>
 
-<!-- loadouts.ini -->
+<!-- loadouts.ini (adds the cloak to the SP campaign starting ship) -->
 <data file="data\ships\loadouts.ini" method="append">
 <section>
 [Loadout]
@@ -86,7 +86,7 @@ equip = cloak_fighter, HpCloak01
 </data>
 
 
-<!-- goods.ini -->
+<!-- goods.ini (adds a cloaking device to all purchasable ships) -->
 <data file="data\equipment\goods.ini" method="append">
 <section>
 [Good]
