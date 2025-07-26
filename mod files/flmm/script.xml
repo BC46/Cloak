@@ -17,6 +17,22 @@ In the In-game options menu you can set a custom key for the "Toggle Cloak" cont
 
 Note that if you are starting a new game with this mod activated, make sure that you delete the Restart.fl file. Otherwise your starting ship may have no cloaking device. If you load an existing savegame, you might need to buy a new ship in order to have a working cloaking device.
 </description>
+
+<options default="1:1,1:2,1:3">
+
+<option id="1" name="What do you want the initial cloak state to be?" savesafe="true">
+<item name="Active but uncloak on launch">
+</item>
+
+<item name="Active (vanilla)">
+</item>
+
+<item name="Inactive">
+</item>
+</option>
+
+</options>
+
 </header>
 
 <!-- dacom.ini (registers the Cloak plugin) -->
@@ -394,6 +410,25 @@ nickname = oe_package
 </section>
 <source>
 addon = cloak_fighter, HpCloak01
+</source>
+</data>
+
+<!-- cloak.ini (logic for the different initial cloak state options) -->
+<data file="exe\cloak.ini" method="filereplace" options="1:2">
+<dest>
+initial_cloak_behavior = 1
+</dest>
+<source>
+initial_cloak_behavior = 0
+</source>
+</data>
+
+<data file="exe\cloak.ini" method="filereplace" options="1:3">
+<dest>
+initial_cloak_behavior = 1
+</dest>
+<source>
+initial_cloak_behavior = 2
 </source>
 </data>
 
