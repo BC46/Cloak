@@ -53,18 +53,18 @@ bool HandleKey_Hook(UINT keyId, BYTE unk)
 
 bool __fastcall ActivateCloak_Hook(CECloakingDevice* cd, PVOID _edx, bool activate)
 {
-    // If the cloaking device is not activated by the player, just use the given value
-    // Otherwise if a storyline NPC with a cloaking device is spawned, then it may not get in the desired state
     CShip* playerShip = GetPlayerShip();
 
-    // playerShip is null if the player launches to space
-    if (playerShip && cd->parent != playerShip)
+    // playerShip is null when the cloak is initially activated by the player
+    if (!playerShip || cd->parent == playerShip)
     {
-        return cd->Activate(activate);
+        // The initial cloaking state should only be false for the player in SP
+        return cd->Activate( SinglePlayer() ? false : activate );
     }
 
-    // If we want the initial cloaking state for the player to be set to false, we only want this in SP
-    return cd->Activate( SinglePlayer() ? false : activate );
+    // If the cloaking device is not activated by the player, just use the given value
+    // Otherwise if a storyline NPC with a cloaking device is spawned, then it may not get in the desired state
+    return cd->Activate(activate);
 }
 
 // Hook for SP function that gets called right after initializing the player's ship (undock or load game in space)
