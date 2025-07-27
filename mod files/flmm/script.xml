@@ -13,7 +13,7 @@ https://github.com/BC46/Cloak
 <description>
 Plugin for the game Freelancer (2003) that allows players to cloak and decloak in Single Player. It also adds a cloaking device to all flyable ships.
 
-In the In-game options menu you can set a custom key for the "Toggle Cloak" control. Using this key, you can cloak and uncloak when in space,
+In the in-game options menu you can set a custom key for the "Toggle Cloak" control. Using this key, you can cloak and uncloak when in space.
 
 Note that if you are starting a new game with this mod activated, make sure that you delete the Restart.fl file. Otherwise your starting ship may have no cloaking device. If you load an existing savegame, you might need to buy a new ship in order to have a working cloaking device.
 </description>
