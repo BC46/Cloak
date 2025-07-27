@@ -21,7 +21,7 @@ Download the latest `Cloak_mod_flmm.zip.flmod` file from [Releases](https://gith
 ## Plugin installation instructions
 This describes how the plugin needs to be installed manually and which ini files need to be edited in order to add the Cloak key.
 
-First, download the latest `Cloak.zip` file from [Releases](https://github.com/BC46/Cloak/releases). Extract all files in the zip to the EXE folder of your Freelancer installation. Next, open the dacom.ini file and append Cloak.dll to the [Libraries] section.
+First, download the latest `Cloak.zip` file from [Releases](https://github.com/BC46/Cloak/releases). Extract all files in the zip to the EXE folder of your Freelancer installation. Next, open the `dacom.ini` file and append `Cloak.dll` to the `[Libraries]` section.
 
 In `DATA/INTERFACE/keylist.ini`, add the following below the first `[Group]` entry:
 ```ini
@@ -48,7 +48,7 @@ See [usage instructions](#usage-instructions) and [troubleshooting](#troubleshoo
 
 ## Usage instructions
 
-In the in-game options menu, you can set a custom key for the `Toggle Cloak` control. Using this key, you can cloak and uncloak when in space, provided that the ship you are flying has a cloaking device equipped and that you are in Single Player. Moreover, the initial cloaking state behavior can be adjusted in the `cloak.ini` file.
+In the in-game options menu, you can set a custom key for the `Toggle Cloak` control. Using this key, you can cloak and uncloak when in space, provided that the ship you are flying has a cloaking device equipped and that you are in Single Player. Moreover, the initial cloaking state can be adjusted in the `cloak.ini` file.
 
 ## Troubleshooting
 
