@@ -1,6 +1,8 @@
 # Cloak
 Plugin for the game Freelancer (2003) that implements the Cloak key. This allows players to cloak and decloak in Single Player, provided the ship has a cloaking device equipped.
 
+https://github.com/user-attachments/assets/ecee007e-f771-4d37-905a-2e0458f7c5fb
+
 ## Installation instructions
 Freelancer players who just want to be able to use cloaking devices in Single Player (vanilla or modded) should follow the [mod installation instructions](#mod-installation-instructions). This will explain how to download the Cloak mod which in addition to making the cloaking devices work, also adds a cloaking device to every ship.
 
