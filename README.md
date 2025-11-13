@@ -52,6 +52,9 @@ See [usage instructions](#usage-instructions) and [troubleshooting](#troubleshoo
 
 In the in-game options menu, you can set a custom key for the `Toggle Cloak` control. Using this key, you can cloak and uncloak when in space, provided that the ship you are flying has a cloaking device equipped and that you are in Single Player. Moreover, the initial cloaking state can be adjusted in the `cloak.ini` file.
 
+If you installed the included mod files, keep in mind that every ship now comes with a cloaking device.
+Joining vanilla servers like this will cause you to get kicked or even banned, so make sure you only use this mod in Single Player.
+
 ## Troubleshooting
 
 If you are starting a new game with the Cloak plugin or mod activated, make sure that you delete the Restart.fl file in your saves directory. Otherwise your starting ship may have no cloaking device. If you load an existing savegame, you may need to buy a new ship in order to have a working cloaking device.
