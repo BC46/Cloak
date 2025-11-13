@@ -54,7 +54,9 @@ In the in-game options menu, you can set a custom key for the `Toggle Cloak` con
 
 ## Troubleshooting
 
-Note that if you are starting a new game with the Cloak plugin or mod activated, make sure that you delete the Restart.fl file in your saves directory. Otherwise your starting ship may have no cloaking device. If you load an existing savegame, you may need to buy a new ship in order to have a working cloaking device.
+If you are starting a new game with the Cloak plugin or mod activated, make sure that you delete the Restart.fl file in your saves directory. Otherwise your starting ship may have no cloaking device. If you load an existing savegame, you may need to buy a new ship in order to have a working cloaking device.
+
+Also note that the mod files part of this project only add a cloaking device to every player-flyable ship from vanilla Freelancer. If you installed the Cloak mod files over a total-conversion mod that adds a bunch of new ships, those may not come with a cloaking device out of the box.
 
 ## Build instructions
 Build the project using the `NMAKE` tool from Microsoft Visual C++ 6.0 (VC6 or Visual Studio 98) with the included makefile.
