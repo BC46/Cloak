@@ -53,10 +53,9 @@ bool HandleKey_Hook(UINT keyId, BYTE unk)
 
 bool __fastcall ActivateCloak_Hook(CECloakingDevice* cd, PVOID _edx, bool activate)
 {
-    CShip* playerShip = GetPlayerShip();
-
-    // playerShip is null when the cloak is initially activated by the player
-    if (!playerShip || cd->parent == playerShip)
+    // Check if the cloaking device is activated by the player
+    CSimple* parent = cd->parent;
+    if (parent && (parent->classType & 3) == 3 && parent->simpleId == PLAYER_SIMPLE_ID)
     {
         // The initial cloaking state should only be false for the player in SP
         return cd->Activate( SinglePlayer() ? false : activate );

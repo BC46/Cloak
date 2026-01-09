@@ -22,6 +22,14 @@ public:
     CEquip* FindFirst(UINT type);
 };
 
+struct CSimple
+{
+    BYTE x00[0x4C];
+    DWORD classType; // 0x4C
+    BYTE x50[0xB0 - 0x50];
+    UINT simpleId; // 0xB0
+};
+
 struct CShip
 {
 private:
@@ -52,7 +60,7 @@ public:
     virtual void x2C_vftable();
     virtual bool Activate(bool val);
 
-    PVOID parent; // x04
+    CSimple* parent; // x04
 };
 
 struct IObjInspectImpl
