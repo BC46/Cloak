@@ -1,9 +1,9 @@
 #include "config.h"
 #include "Common.h"
 
-CloakingStrategy GetCloakingStrategy()
+CloakConfig GetConfig()
 {
-    CloakingStrategy result = AutomaticallyUncloakCS;
+    CloakConfig result{ AutomaticallyUncloakCS, false };
     INI_Reader reader;
 
     reader.open("cloak.ini");
@@ -20,7 +20,11 @@ CloakingStrategy GetCloakingStrategy()
                 int intVal = reader.get_value_int();
 
                 if (intVal >= 0 && intVal <= 2)
-                    result = (CloakingStrategy) intVal;
+                    result.strategy = (CloakingStrategy) intVal;
+            }
+            else if (reader.is_value("npc_engine_fade"))
+            {
+                result.useNpcEngineFade = reader.get_value_bool();
             }
         }
     }

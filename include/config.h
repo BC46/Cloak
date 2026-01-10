@@ -5,4 +5,10 @@ enum CloakingStrategy
     InactiveCS
 };
 
-CloakingStrategy GetCloakingStrategy();
+struct CloakConfig
+{
+    CloakingStrategy strategy;
+    bool useNpcEngineFade;
+};
+
+CloakConfig GetConfig();

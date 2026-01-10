@@ -9,14 +9,14 @@ void Init()
     bool (*handleKeyOriginal)(UINT keyId, BYTE unk) = AbsTrampoline(HANDLE_KEY_ADDR, HandleKey_Hook, 7);
     SetOriginalHandleKeyFunc(handleKeyOriginal);
 
-    CloakingStrategy strategy = GetCloakingStrategy();
+    CloakConfig cloakConfig = GetConfig();
 
-    if (strategy == AutomaticallyUncloakCS)
+    if (cloakConfig.strategy == AutomaticallyUncloakCS)
     {
         static PVOID singlePlayerPtr = PostInitSinglePlayer_Hook;
         SetPointer(POST_INIT_SP_CALL_ADDR, &singlePlayerPtr);
     }
-    else if (strategy == InactiveCS)
+    else if (cloakConfig.strategy == InactiveCS)
     {
         DWORD common = (DWORD) GetModuleHandleA("common.dll");
 
@@ -28,6 +28,11 @@ void Init()
 
         Hook(common + patchOffset, (DWORD) ActivateCloak_Hook, 5);
     }
+
+    #define USE_NPC_ENGINE_FADE_ADDR (0x528A8D)
+    ReadWriteProtect(USE_NPC_ENGINE_FADE_ADDR, sizeof(BYTE));
+    *((PBYTE) USE_NPC_ENGINE_FADE_ADDR)
+        = cloakConfig.useNpcEngineFade ? 0x18 : 0x1C;
 }
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved)

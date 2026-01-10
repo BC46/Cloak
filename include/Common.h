@@ -81,6 +81,7 @@ public:
     bool read_value();
     bool is_value(LPCSTR name);
     int get_value_int(UINT index = 0);
+    bool get_value_bool(UINT index = 0);
     void close();
 
 private:
