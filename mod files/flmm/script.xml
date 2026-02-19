@@ -22,7 +22,7 @@ Also note that this Cloak addon only adds a cloaking device to every player-flya
 Keep in mind that every ship now comes with a cloaking device. Joining vanilla servers like this will cause you to get kicked or even banned, so make sure you only use this addon in Single Player.
 </description>
 
-<options default="1:1,1:2,1:3">
+<options default="1:1,1:2,1:3,2:1,2:2,3:1,3:2">
 
 <option id="1" name="What do you want the initial cloak state to be?" savesafe="true">
 <item name="Active but uncloak on launch">
@@ -32,6 +32,22 @@ Keep in mind that every ship now comes with a cloaking device. Joining vanilla s
 </item>
 
 <item name="Inactive">
+</item>
+</option>
+
+<option id="2" name="Enable NPC engine fade effect?" savesafe="true">
+<item name="No">
+</item>
+
+<item name="Yes">
+</item>
+</option>
+
+<option id="3" name="Hide the cockpit model while cloaked?" savesafe="true">
+<item name="No">
+</item>
+
+<item name="Yes">
 </item>
 </option>
 
@@ -433,6 +449,24 @@ initial_cloak_behavior = 1
 </dest>
 <source>
 initial_cloak_behavior = 2
+</source>
+</data>
+
+<data file="exe\cloak.ini" method="filereplace" options="2:2">
+<dest>
+npc_engine_fade = false
+</dest>
+<source>
+npc_engine_fade = true
+</source>
+</data>
+
+<data file="exe\cloak.ini" method="filereplace" options="3:2">
+<dest>
+hide_cockpit_while_cloaked = false
+</dest>
+<source>
+hide_cockpit_while_cloaked = true
 </source>
 </data>
 
