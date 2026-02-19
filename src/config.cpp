@@ -3,7 +3,7 @@
 
 CloakConfig GetConfig()
 {
-    CloakConfig result{ AutomaticallyUncloakCS, false };
+    CloakConfig result;
     INI_Reader reader;
 
     reader.open("cloak.ini");
@@ -25,6 +25,10 @@ CloakConfig GetConfig()
             else if (reader.is_value("npc_engine_fade"))
             {
                 result.useNpcEngineFade = reader.get_value_bool();
+            }
+            else if (reader.is_value("hide_cockpit_while_cloaked"))
+            {
+                result.hideCockpitWhileCloaked = reader.get_value_bool();
             }
         }
     }
