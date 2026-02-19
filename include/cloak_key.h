@@ -14,3 +14,5 @@ bool HandleKey_Hook(UINT keyId, BYTE unk);
 bool __fastcall ActivateCloak_Hook(CECloakingDevice* cd, PVOID _edx, bool activate);
 
 bool PostInitSinglePlayer_Hook();
+
+bool __fastcall HideCockpitModel_Hook(const float& cockpitPerformanceOpt);

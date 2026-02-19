@@ -33,6 +33,19 @@ void Init()
     ReadWriteProtect(USE_NPC_ENGINE_FADE_ADDR, sizeof(BYTE));
     *((PBYTE) USE_NPC_ENGINE_FADE_ADDR)
         = cloakConfig.useNpcEngineFade ? 0x18 : 0x1C;
+
+    if (cloakConfig.hideCockpitWhileCloaked)
+    {
+        #define HIDE_COCKPIT_CHECK_ADDR (0x518492)
+
+        WORD leaEcx = 0x4C8D;
+        Patch(HIDE_COCKPIT_CHECK_ADDR, &leaEcx, sizeof(leaEcx));
+
+        Hook(HIDE_COCKPIT_CHECK_ADDR + 4, (DWORD) HideCockpitModel_Hook, 9, false);
+
+        WORD testAlAl = 0xC084;
+        Patch(HIDE_COCKPIT_CHECK_ADDR + 4 + 9, &testAlAl, sizeof(testAlAl));
+    }
 }
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved)

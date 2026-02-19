@@ -5,21 +5,28 @@
 
 #define HANDLE_KEY_SECOND_INSTR_ADDR HANDLE_KEY_ADDR + 0x6
 
+#define HIDE_COCKPIT_THRESHOLD (0.999)
+
 CShip* GetPlayerShip()
 {
     IObjInspectImpl* playerIObjInspect = ((GetPlayerIObjInspectImpl*) GET_PLAYERIOBJINSPECTIMPL_ADDR)();
     return !playerIObjInspect ? NULL : playerIObjInspect->ship;
 }
 
-void DoCloak()
+CECloakingDevice* GetPlayerCloakingDevice()
 {
     CShip* playerShip = GetPlayerShip();
 
     if (!playerShip)
-        return;
+        return NULL;
 
     CECloakingDevice* cd = CECloakingDevice::cast(playerShip->equipManager.FindFirst(CLOAKING_DEVICE_TYPE));
+    return cd;
+}
 
+void DoCloak()
+{
+    CECloakingDevice* cd = GetPlayerCloakingDevice();
     if (!cd)
         return;
 
@@ -74,4 +81,15 @@ bool PostInitSinglePlayer_Hook()
 
     // Call original function
     return SinglePlayer();
+}
+
+bool __fastcall HideCockpitModel_Hook(const float& cockpitPerformanceOpt)
+{
+    // Original check
+    if (cockpitPerformanceOpt <= HIDE_COCKPIT_THRESHOLD)
+        return true;
+
+    // Hide the cockpit model if the player ship is fully cloaked
+    CECloakingDevice* cd = GetPlayerCloakingDevice();
+    return cd && cd->cloak_percent() == 1.0f;
 }
