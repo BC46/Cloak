@@ -5,9 +5,7 @@
 
 void Init()
 {
-    // Hook call
-    bool (*handleKeyOriginal)(UINT keyId, BYTE unk) = AbsTrampoline(HANDLE_KEY_ADDR, HandleKey_Hook, 7);
-    SetOriginalHandleKeyFunc(handleKeyOriginal);
+    RegisterCloakKeyHandler();
 
     CloakConfig cloakConfig = GetConfig();
 

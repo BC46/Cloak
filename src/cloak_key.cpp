@@ -3,8 +3,6 @@
 
 #define Naked __declspec(naked)
 
-#define HANDLE_KEY_SECOND_INSTR_ADDR HANDLE_KEY_ADDR + 0x6
-
 #define HIDE_COCKPIT_THRESHOLD (0.999)
 
 CShip* GetPlayerShip()
@@ -38,24 +36,21 @@ void DoCloak()
         cd->Activate(false);
 }
 
-bool (*HandleKey_Original)(UINT keyId, BYTE unk);
-
-void SetOriginalHandleKeyFunc(bool (*func)(UINT keyId, BYTE unk))
+bool CloakKeyHandler::HandleKey(DWORD keyId)
 {
-    HandleKey_Original = func;
+    // We only want to add support for cloaking in SP
+    if (SinglePlayer())
+        DoCloak();
+
+    return true;
 }
 
-bool HandleKey_Hook(UINT keyId, BYTE unk)
-{
-    // If the cloak key is pressed and we are in SP, we handle it ourselves
-    if (keyId == CLOAK_KEY_IDENTIFIER && SinglePlayer())
-    {
-        DoCloak();
-        return true;
-    }
+typedef void (RegisterKeyHandlerFunc)(const KeyHandler* keyHandler, DWORD keyId);
 
-    // If any other key is pressed, we let the game handle it
-    return HandleKey_Original(keyId, unk);
+void RegisterCloakKeyHandler()
+{
+    static CloakKeyHandler keyHandler;
+    ((RegisterKeyHandlerFunc*) REGISTER_KEY_HANDLER_ADDR)(&keyHandler, CLOAK_KEY_IDENTIFIER);
 }
 
 bool __fastcall ActivateCloak_Hook(CECloakingDevice* cd, PVOID _edx, bool activate)
